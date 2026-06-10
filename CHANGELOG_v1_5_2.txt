@@ -1,0 +1,64 @@
+GERENCIADOR DE COLHEITA - CHANGELOG V1.5.2
+==========================================
+
+CORRECOES REALIZADAS
+--------------------
+- Atualizada a identificacao para FW_VERSION_STRING "1.5.2".
+- Criada rotina_boot(), executada imediatamente depois de lcd_ini().
+- A tela de boot mostra por aproximadamente 2000 ms:
+  Gerenciador
+  Colheita V1.5.2
+- A versao exibida usa FW_VERSION_STRING, sem duplicar o numero no texto.
+- Criada eeprom_memoria_vazia(), que verifica os bytes de dados 0..251.
+- Uma area 0..251 totalmente preenchida com 0xFF e considerada invalida.
+- eeprom_checksum_valido() agora exige:
+  1. memoria de dados nao vazia;
+  2. pelo menos uma gleba com diagnostico valido entre 1 e 8;
+  3. checksum XOR correto para os bytes 0..251.
+- Criada rotina_validacao_eeprom().
+- Quando a EEPROM e invalida, a rotina mostra por aproximadamente 2000 ms:
+  EEPROM invalida
+  Restaurando...
+- A recuperacao carrega os defaults em RAM e atualiza somente o checksum.
+- Nenhum registro de gleba e apagado durante a validacao.
+
+AUDITORIAS
+----------
+- Confirmado que rotina_ler_eeprom() limita valor_gleba a 1..12.
+- Confirmado que cada registro usa 21 bytes e termina no endereco 251.
+- Confirmado que rotina_salvar_eeprom() grava somente em 0..251.
+- Confirmado que eeprom_write_if_changed() rejeita endereco acima de 255.
+- Confirmado que rotina_limpar_memoria() percorre exatamente 0..255.
+- Confirmado que rotina_upload() le exatamente 0..255.
+- Confirmado o protocolo USB HID: 32 pacotes de 8 bytes, total 256 bytes.
+- Descritores e bibliotecas USB nao foram alterados.
+- Confirmada alimentacao do WDT em todos os lacos potencialmente longos.
+- Algoritmos agronomicos de diagnostico, vibracao e velocidade nao mudaram.
+
+IMPACTOS
+--------
+- A versao do firmware fica visivel no inicio durante cerca de 2 segundos.
+- EEPROM vazia nao pode mais passar na validacao apenas por coincidencia XOR.
+- A validacao adiciona uma leitura dos 252 bytes de dados na inicializacao.
+- O WDT continua sendo alimentado durante leitura, mensagens e atrasos.
+
+COMPATIBILIDADE
+---------------
+- Hardware, pinagem e PIC18F2550 preservados.
+- Clock de 48 MHz e cristal externo de 20 MHz preservados.
+- LCD 16x2 e navegacao preservados.
+- Mapa EEPROM preservado:
+  dados das glebas 0..251;
+  checksum 252;
+  dia 253;
+  mes 254;
+  ano 255.
+- USB HID e software de PC de campo permanecem compativeis.
+- Bootloader em 0x1100 e vetores remapeados permanecem preservados.
+- Compilador alvo continua CCS PCWHD v5.008.
+
+RISCO RESIDUAL
+--------------
+- Restaurar defaults nao recria uma gleba na EEPROM. Se nao houver nenhuma
+  gleba valida, a memoria continuara invalida no proximo boot. Isso evita
+  apagar ou fabricar registros e preserva a compatibilidade do layout.

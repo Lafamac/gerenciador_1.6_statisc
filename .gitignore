@@ -1,0 +1,21 @@
+# CCS generated files
+*.STA
+*.ccspjt
+*.cof
+*.err
+*.esym
+*.hex
+*.lst
+*.sym
+*.tre
+*.xsym
+
+# IDE and simulator workspace files
+*.mcw
+*.workspace
+*.DBK
+
+# Archives and temporary files
+*.zip
+*.tmp
+~$*
