@@ -13,6 +13,8 @@ Todas as alterações notáveis feitas no firmware nesta versão v1.6 estão reg
 - **Menu Principal Simplificado**: Criação de uma interface direta com 4 opções principais: `1 Nova Avaliacao`, `2 Historico`, `3 Calibrar`, `4 Apagar Memoria`.
 - **Prevenção de Travamentos (WDT)**: Inclusão de `restart_wdt()` em loops de espera de botões e loops de calibração para evitar reinicializações indesejadas pelo Watchdog Timer.
 - **Debounce de Botões**: Implementação de debounce por software para evitar cliques repetidos acidentais nos botões de navegação e confirmação.
+- **Remoção das Telas de Colhedora**: Comentadas as funções `rotina_colhedora()` e `rotina_display_colhedora()` e suas chamadas nas rotinas de Nova Avaliação e Histórico, simplificando o fluxo no campo.
+
 
 ### Correções e Melhorias no ADC e Balança
 - **Filtro de Leitura ADC**: Substituição das chamadas diretas de `read_adc()` pela função `ler_adc_filtrado()`, realizando uma média aritmética de amostras para maior estabilidade na medição de força e peso.

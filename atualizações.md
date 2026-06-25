@@ -15,6 +15,8 @@
   4. `4. Limpar Memoria`
 - **Proteção Watchdog (WDT)**: Inclusão de `restart_wdt()` na máquina de estados principal e loops internos de botões para evitar resets acidentais em caso de operador demorar a interagir.
 - **Melhoria nos Botões**: Debounce aprimorado e prevenção de bounce de retorno nos botões CONFIRMA e RETORNA ao voltar dos submenus de Calibração e Balança.
+- **Simplificação do Fluxo (Colhedora)**: Comentadas as funções `rotina_colhedora()` e `rotina_display_colhedora()`, removendo estas etapas do fluxo de parametrização da *Nova Avaliação* e da consulta de *Histórico* para otimização de tempo de operação e simplificação do display.
+
 
 ### Balança e EEPROM
 - **Zero Inicial com Alta Definição**: A tara automática do ADC feita no boot foi ampliada para tirar a média de 64 amostras (usando `ler_adc_filtrado_amostras(64)`), garantindo um ponto de zero muito mais estável.

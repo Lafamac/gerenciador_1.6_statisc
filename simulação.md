@@ -46,7 +46,7 @@ Este documento orienta os testes funcionais do firmware `codigo_v1_6_estatistica
   4. **Espaço entre Pés (Planta)** e **Espaço entre Ruas**: Ajuste com Esquerda/Direita (exibe em metros) e confirme.
   5. **Altura da Planta** e **Ramos/planta**: Ajuste e confirme.
   6. **Porcentagem de Cereja** e **Porcentagem de Verde**: Ajuste e confirme.
-  7. **Renda** e **Colhedora**: Ajuste e confirme.
+  7. **Renda**: Ajuste e confirme. (A tela de Colhedora foi comentada e removida do fluxo).
   8. **Carga Pendente**: Ajuste o valor inteiro e depois o decimal (ex: `02.5 L/planta`) e confirme.
   9. **Plantacao/Produtividade**: Exibe o resultado calculado em sacas/ha (ex: `38 sc/ha`). Pressione Confirma para aceitar os valores calculados de produtividade ou Direita para entrar no modo de correção manual.
   10. **Medição de Força**:

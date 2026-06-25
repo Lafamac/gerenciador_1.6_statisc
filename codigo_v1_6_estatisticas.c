@@ -496,6 +496,7 @@ void rotina_display_carga_pendente ()
 }
 
 
+/*
 void rotina_display_colhedora () 	
 {
 	rotina_apaga_lcd ();                                     
@@ -512,6 +513,7 @@ void rotina_display_colhedora ()
 	if (valor_colhedora == 8) rotina_lcd_escreve ("TDI Tracionada  ");
 	if (valor_colhedora == 9) rotina_lcd_escreve ("Vetor           ");
 }
+*/
 
 void rotina_display_porcentagem ()
 {
@@ -1016,6 +1018,7 @@ void rotina_carga_pendente ()
 	goto label_carga_pendente_dec;
 }
 
+/*
 void rotina_colhedora ()			// colhedora 
 {
 	label_colhedora:
@@ -1026,6 +1029,7 @@ void rotina_colhedora ()			// colhedora
 	if (botao_pressionado == 2 && valor_colhedora > 0) valor_colhedora -= 1;
 	goto label_colhedora;
 }
+*/
 
 void rotina_renda ()			// renda
 {
@@ -1413,10 +1417,11 @@ void rotina_historico ()
 	rotina_seta_direita ();
 	rotina_botoes ();
 	if (botao_pressionado == 1) return;
-	if (botao_pressionado == 3) goto label_historico_colhedora;
+	if (botao_pressionado == 3) goto label_historico_carga_pendente;
 	if (botao_pressionado == 2) goto label_historico_porcentagem_cereja;
 	goto label_historico_porcentagem_verde;
 
+	/*
 	label_historico_colhedora:
 	rotina_display_colhedora();
 	lcd_pos_xy (1,1);												//insere uma setinha a esquerda no lcd
@@ -1438,6 +1443,7 @@ void rotina_historico ()
 	if (botao_pressionado == 3) goto label_historico_carga_pendente;
 	if (botao_pressionado == 2) goto label_historico_porcentagem_verde;
 	goto label_historico_colhedora;
+	*/
 
 	label_historico_carga_pendente:
 	rotina_display_carga_pendente ();
@@ -1446,7 +1452,7 @@ void rotina_historico ()
 	rotina_botoes ();
 	if (botao_pressionado == 1) return;
 	if (botao_pressionado == 3) goto label_historico_produtividade;
-	if (botao_pressionado == 2) goto label_historico_colhedora;
+	if (botao_pressionado == 2) goto label_historico_porcentagem_verde;
 	goto label_historico_carga_pendente;
 
 	label_historico_produtividade:
@@ -1562,12 +1568,14 @@ void rotina_avaliacao ()
 	label_avaliacao_renda:
 	rotina_renda ();
 	if (botao_pressionado == 1) goto label_avaliacao_porcentagem_verde;
+	/*
 	label_avaliacao_colhedora:
 	rotina_colhedora ();
 	if (botao_pressionado == 1) goto label_avaliacao_renda;
+	*/
 	label_avaliacao_carga_pendente:
 	rotina_carga_pendente ();
-	if (botao_pressionado == 1) goto label_avaliacao_colhedora;
+	if (botao_pressionado == 1) goto label_avaliacao_renda;
 	label_avaliacao_plantacao_produtividade:
 	rotina_plantacao_produtividade ();
 	if (botao_pressionado == 1) goto label_avaliacao_carga_pendente;
